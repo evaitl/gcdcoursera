@@ -50,5 +50,6 @@ df$activity<-activity_labels[df$activity,'act_name']
 tidy<-aggregate(df[,3:ncol(df)],by=list(df$subject,df$activity), mean)
 colnames(tidy)[2]<-'activity'
 colnames(tidy)[1]<-'subject'
+tidy<-tidy[order(tidy$subject),]
 write.table(tidy,'tidy.txt',row.names=F)
 
